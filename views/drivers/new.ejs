@@ -1,0 +1,137 @@
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+    <h1 class="text-center">New Data</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/drivers" method="POST" novalidate class="validated-form"  enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="firstName">First Name</label>
+                <input class="form-control" type="text" id="firstName" name="driver[firstName]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input class="form-control" type="text" id="lastName" name="driver[lastName]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="text" id="email" name="driver[email]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="campground[image]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label" for="age">Age</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="age" placeholder=""  name="driver[age]" required>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="address">Home Address</label>
+                <input class="form-control" type="text" id="address" name="driver[address]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="hometown">HomeTown</label>
+              <input class="form-control" type="text" id="hometown" name="driver[hometown]" required>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="garage">Garage</label>
+              <select name="driver[garage]" id="garage">
+                <% for(let garage of garages){ %> 
+                    <option value="<%=garage %>"> <%=garage %></option>
+                <% } %> 
+              </select>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="category">Motor</label>
+              <select name="driver[category]" id="category">
+                <% for(let category of categories){ %> 
+                    <option value="<%=category %>"> <%=category %></option>
+                <% } %> 
+              </select>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="license">License No </label>
+              <input class="form-control" type="text" id="license" name="driver[license]" required>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="phoneNumber">Phone Number</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="phoneNumber">+234</span>
+                    <input type="text" class="form-control" id="phoneNumber" placeholder="8002030405"
+                         name="driver[phoneNumber]" required>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> 
+            <div class="mb-3">
+              <label class="form-label" for="status">Status</label>
+              <input class="form-control" type="text" id="status" name="driver[status]" required>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="nextOfKin">Next Of Kin</label>
+              <input class="form-control" type="text" id="nextOfKin" name="driver[nextOfKin]" required>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="phone_next">Next Of Kin's Phone Number</label>
+              <div class="input-group">
+                  <span class="input-group-text" id="phone_next">+234</span>
+                  <input type="text" class="form-control" id="phone_next" placeholder="8002030405"
+                        name="driver[phone_next]" required>
+              </div>
+              <div class="valid-feedback">
+                  Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-file custom-file">
+                    <input type="file" class="form-file-input" id="image" name="image" multiple>
+                    <label class="form-file-label" for="image">
+                        <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                        <span class="form-file-button">Browse</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add Driver</button>
+            </div>
+        </form>
+        <a href="/means">View Drivers' info</a>
+    </div>
+</div>

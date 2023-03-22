@@ -1,0 +1,54 @@
+<% layout('layouts/boilerplate') %> 
+<div class="container text-center">
+  <h1 >Edit A Motor</h1>
+  <div class="col-md-6">
+    <form action="/means/<%=mean._id %>?_method=PUT" method="POST">
+      <div class="mb-3">
+        <label class="form-label" for="name">Driver's Name</label>
+        <input class="form-control" type="text" id="name" name="name" value="<%=mean.name %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="owner">Owner's Name</label>
+        <input class="form-control" type="text" id="owner" name="owner" value="<%=mean.owner %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="plateNumber">Motor Plate's Number </label>
+        <input class="form-control" type="text" id="plateNumber" name="plateNumber" value="<%=mean.plateNumber %>" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="category">Select A Motor</label>
+        <select class="form-control" name="category" id="category">
+          <% for(let category of categories){ %> 
+            <option value="<%=category%>" <%= mean.category === category ? 'selected': '' %> ><%=category%></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="category">Select A Garage</label>
+        <select class="form-control" name="garage" id="garage">
+          <% for(let garage of garages){ %> 
+            <<option value="<%=garage%>" <%= mean.garage === garage ? 'selected': '' %> ><%=garage%></option>
+          <% } %> 
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Submit</button>
+        <a class="btn btn-info" href="/means">Cancel</a>
+      </div>
+      
+    </form>
+  </div>
+</div>

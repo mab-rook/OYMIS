@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %> 
+<div class="container">
+  <div class="row">
+    <h2><%= mean.category%></h2>
+    <table style="width: 45%;" class="table table-hover table-bordered table-dark">
+      <tbody>
+         <tr>
+        <td>Driver's name</td>
+        <td><%=mean.name %></td>
+      </tr>
+      <tr>
+        <td>Owner's name</td>
+        <td><%=mean.owner %></td>
+      </tr>
+      <tr>
+        <td>Plate No</td>
+        <td><%=mean.plateNumber %></td>
+      </tr>
+      <tr>
+        <td>Garage</td>
+        <td><%=mean.garage %></td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><a class="btn btn-success" href="/means/<%=mean._id %>/edit">Edit</a></td>
+          <td>
+            <form action="/means/<%=mean._id%>?_method=DELETE" method="POST">
+              <button class=" btn btn-danger">Delete</button>
+            </form>  
+          </td>
+        </tr>
+      </tfoot>
+     
+    </table>
+
+  </div>
+</div>

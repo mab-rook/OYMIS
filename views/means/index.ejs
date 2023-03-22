@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %> 
+<div class="container">
+  <h1 class="text-center">MOTORS - <%=category%> </h1>
+  
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Garages</th>
+          <th>Drivers</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let mean of means){ %>
+          <tr>
+            <td><a href="/drivers?garage=<%=mean.garage %>"><%=mean.garage %></a></td>
+            <td><a href="/means?category=<%= mean.category%>"><%=mean.category %></a></td>
+            <td><a class="btn btn-success" href="/means/<%=mean._id %>">View Info</a></td>
+            <td>
+              <form action="/means/<%=mean._id%>?_method=DELETE" method="POST">
+                <button class=" btn btn-danger">Delete</button>
+              </form>  
+            </td>          
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  
+
+  <% if(category !== "All"){ %>
+    <a class="btn btn-primary" href="/means">All Motors</a>
+  <% } %>
+</div>

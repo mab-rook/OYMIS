@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate') %> 
+<div class="container">
+  <div class="main mb-4">
+        
+    <h1 class="text-center"><%=driver.firstName %>'s Personal info</h1>
+
+    <div id="drivercarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <% driver.images.forEach((img, i) =>{ %>
+            <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+              <img width="25%"  height="20%" src="<%= img.url%>" class=" rounded mx-auto d-block img-thumbnail" alt="...">
+            </div>  
+        <% }) %>
+        
+      </div>
+      <% if(driver.images.length > 1){ %>
+        <a class="carousel-control-prev" href="#driverCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#driverCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      <% } %>
+    </div>
+
+    <div class="mt-2 text-center ">
+       <a class=" btn btn-success" href="/drivers/<%=driver._id %>/edit">Edit</a>
+      <form class="d-inline" action="/drivers/<%=driver._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+   
+  </div>
+  
+  <table class="table table-bordered table-hover table-danger mb-4" border="3">
+    <tbody>
+      <tr>
+        <td>First Name: <%=driver.firstName %></td>
+        <td>Last Name: <%=driver.lastName %></td>
+      </tr>
+      <tr>
+        <td>Email: <%=driver.email %></td>
+        <td>Age: <%=driver.age %></td>
+      </tr>
+      <tr>
+        <td>Hometown: <%=driver.hometown %></td>
+        <td>Home Address: <%=driver.address %></td>
+      </tr>
+      <tr>
+        <td>Status: <%=driver.status %></td>
+        <td>Phone Number: +234<%=driver.phoneNumber %></td>
+      </tr>
+      <tr>
+        <td>Motor: <%=driver.category %></a> </td>
+        <td>License NO: <%=driver.license %></td>
+      </tr>
+      <tr>
+        <td>Next Of Kin: <%=driver.nextOfKin %></td>
+        <td>Next Of kin's Tel: +234<%=driver.phone_next %></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

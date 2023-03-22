@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %> 
+<div class="container col-md-6">
+  <h1>Add A Motor</h1>
+  <div class="col-md-6">
+    <form action="/means" method="POST">
+      <div class="mb-3">
+        <label class="form-label" for="name">Driver's Name</label>
+        <input class="form-control" type="text" id="name" name="name" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="owner">Owner's Name</label>
+        <input class="form-control" type="text" id="owner" name="owner" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="plateNumber">Motor Plate's Number </label>
+        <input class="form-control" type="text" id="plateNumber" name="plateNumber" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="category">Select A Motor</label>
+        <select class="form-control" name="category" id="category">
+          <% for(let category of categories){ %> 
+            <option value="<%=category %>"> <%=category %></option>
+          <% } %> 
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="garage">Select A Garage</label>
+        <select class="form-control" name="garage" id="garage">
+          <% for(let garage of garages){ %> 
+            <option value="<%=garage %>"> <%=garage %></option>
+          <% } %> 
+        </select>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Submit</button>
+        <a class="btn btn-info" href="/means">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

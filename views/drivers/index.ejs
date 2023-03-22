@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %> 
+<div class="cotainer">
+  <div class="main text-center mb-2">
+    <h1>  Drivers' info </h1>
+    <p class="h4 text-decoration-underline"> <%=garage%></p>
+  </div>
+  <!-- move this to landing page -->
+
+  <div class="dropdown mb-5" style="float:right;">
+    <button class="dropbtn">View by Garages</button>
+    <div class="dropdown-content">
+      <a href="/drivers?garage=Mobolaje">Mobolaje</a>
+      <a href="/drivers?garage=Owode">Owode</a>
+      <a href="/drivers?garage=Cele">Cele</a>
+      <a href="/drivers?garage=Oke-Oba">Oke-Oba</a>
+      <a href="/drivers?garage=Akimorin">Akimorin</a>
+      <a href="/drivers?garage=Idi-Igba">Idi-Igba</a>
+      <a href="/drivers?garage=Araromi">Araromi</a>
+    </div>
+  </div>
+
+  <div class="">
+    <% if(noMatch !== null){ %>
+          <h3><%=noMatch %></h3>
+          <form action="/drivers" method="GET" class="form-inline">
+            <input type="search" name="search" placeholder="Search with name">
+            <button>Search</button>
+          </form>
+    <% } %>
+  </div>
+
+  
+
+
+  <table class="table table-bordered table-hover border-dark">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Garage</th>
+        <th> Email</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for ( let driver of drivers){ %>
+        <tr>
+          <td class="table-danger"><%= driver.lastName %> <%= driver.firstName%></td>
+          <td class="table-primary"><%=driver.garage %></td>
+          <td class="table-secondary"><%=driver.email %></td>
+          <td> <a class="btn btn-primary" href="/drivers/<%=driver._id %>">View info</a></td>
+          <td> 
+            <form action="/drivers/<%=driver._id%>?_method=DELETE" method="POST">
+              <button class=" btn btn-danger">Delete</button>
+            </form> 
+          </td>
+        </tr>
+      <% } %>
+
+      
+      <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <% if(garage!== "All"){ %>
+      <a class="btn btn-primary" href="/drivers">All Drivers</a>
+  <% } %>
+</div>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis</title>
+  <style>
+     body{
+      height: 100vh;
+      box-sizing: border-box;
+      /* background-color: #000; */
+    }
+
+    .home{
+      /* height: 100vh; */
+      width: 100%;
+      background: black;
+      z-index: 2;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      /* padding-left: px; */
+      padding-left: 8%;
+      /* padding-right: %; */
+    }
+
+    .logo{
+      color: brown;
+      font-size: 35px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    span{
+      color: rgb(244, 244, 29);
+    }
+
+    nav ul li{
+      list-style-type: none;
+      display: inline-block;
+      padding: 10px 25px;
+    }
+
+    nav ul li a{
+      color: brown;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    nav ul li a:hover{
+      color: yellow;
+      transition: .4s;
+    }
+
+    .newsletter form{
+      width: 380px;
+      max-width: 100%;
+      position: relative;
+    }
+
+    .newsletter form input:first-child{
+      display: inline-block;
+      width: 100%;
+      padding: 14px 130px 14px 15px;
+      border: 2px solid brown;
+      outline: yellow;
+      border-radius: 30px;
+    }
+
+    .newsletter form button{
+      position: absolute;
+      display: inline-block;
+      outline: none;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 30px;
+      background-color: brown;
+      color: white;
+      box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
+      top: 6px;
+      right: 6px; 
+    }
+
+     .container {
+      width: 100%;
+      height: 50vh;
+      display: grid;      
+      place-items: center;
+      
+    }
+    
+    .write-on-text {
+        font-size: 2rem;
+        font-family: 'consolas';
+        font-weight: 600;
+        color: black;
+    }
+    .container > a {
+        font-size: 1.2rem;
+        font-family: 'consolas';
+        font-style: italic;
+        color: rgb(235, 133, 55);
+        text-decoration: underline;
+    }
+    .container > a:hover {
+        transition: all ease-in-out .5s;
+        color: rgb(142, 65, 7);
+    }
+  </style>
+</head>
+<body>
+    <nav>
+      <h2 class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bus-front" viewBox="0 0 16 16">
+          <path d="M5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H7Zm1-6c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9c1.876 0 3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44.303 44.303 0 0 0 8 4Zm0-1c-1.837 0-3.353.107-4.448.22a.5.5 0 1 1-.104-.994A44.304 44.304 0 0 1 8 2c1.876 0 3.426.109 4.552.226a.5.5 0 1 1-.104.994A43.306 43.306 0 0 0 8 3Z"/>
+          <path d="M15 8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1V2.64c0-1.188-.845-2.232-2.064-2.372A43.61 43.61 0 0 0 8 0C5.9 0 4.208.136 3.064.268 1.845.408 1 1.452 1 2.64V4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v3.5c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2V8ZM8 1c2.056 0 3.71.134 4.822.261.676.078 1.178.66 1.178 1.379v8.86a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5V2.64c0-.72.502-1.301 1.178-1.379A42.611 42.611 0 0 1 8 1Z"/>
+        </svg>OYM<span>IS</span></h2>
+      <ul>
+        <li><a href="/">Home</a> </li>
+        <li><a href="/drivers">Drivers</a></li>
+        <li><a href="/means">Motors</a></li>
+      </ul>
+    </nav>
+</body>
+</html>
