@@ -37,14 +37,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-
-// app.use(cookieParser());
-// app.use(session());
-// app.configure(function() {
-//   app.use(express.cookieParser('keyboard cat'));
-//   app.use(express.session({ cookie: { maxAge: 60000 }}));
-//   app.use(flash());
-// });
 app.use(session({
     secret:'Amubpem',
     saveUninitialized: true,
@@ -61,12 +53,14 @@ app.use((req, res, next) => {
 
 
 // var noMatch = null
-const garages = ['Mobolaje', 'Owode', 'cele', 'Oke Oba', 'Akimorin', 'Idi Igba', 'Araromi']
+const garages = ['Mobolaje', 'Owode', 'Cele', 'Oke-Oba', 'Akimorin', 'Idi-Igba', 'Araromi']
 const categories = ['Bus', 'Tricycle', 'Bicycle']
 app.get('/', (req, res) => {
   res.render('home')
 })
 
+
+// ROUTES - About drivers and their info
 app.get('/drivers', async (req, res) => {
   const {garage} = req.query
   let noMatch = null;
@@ -169,6 +163,8 @@ app.delete('/drivers/:id', async (req, res) => {
   res.redirect('/drivers');
 })
 
+
+//ROUTES - About Motors 
 app.get('/means', async (req, res) => {
   const { category } = req.query
   if (category) {
@@ -220,7 +216,7 @@ app.delete('/means/:id', async (req, res) => {
 
 
 
-
+// Regex function for fuzzy search
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
