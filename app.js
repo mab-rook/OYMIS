@@ -37,6 +37,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
 // app.use(cookieParser());
 // app.use(session());
 // app.configure(function() {
@@ -102,8 +103,8 @@ app.post('/drivers', upload.array("image"), async (req, res) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'mubarakmahmunalaka@gmail.com',
-      pass: 'wrzjbavyxhvthmks',
+      user: 'roycheek478@gmail.com',
+      pass: 'ovlgwtfgkjbbkjzk',
         },
       tls: {
         rejectUnauthorized: false
