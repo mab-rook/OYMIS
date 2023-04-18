@@ -19,15 +19,28 @@ const { storage, cloudinary } = require('./cloudinary/index');
 const upload = multer({ storage });
 
 
+mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://127.0.0.1:27017/mis')
-  .then(() => {
+const databaseUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017/mis'
+
+mongoose.connect(databaseUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
     console.log('connection opened')
   })
   .catch(err => {
     console.log('connection closed')
     console.log(err)
   })
+
+
+// mongoose.connect('mongodb://127.0.0.1:27017/mis')
+//   .then(() => {
+//     console.log('connection opened')
+//   })
+//   .catch(err => {
+//     console.log('connection closed')
+//     console.log(err)
+//   })
 
 const app = express()
 app.engine('ejs', ejsMate)
