@@ -8,8 +8,10 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const nodemailer = require('nodemailer');
 const { v4: uuidv4 } = require('uuid');
-var cookieParser = require('cookie-parser');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const mongoSanitize = require('express-mongo-sanitize');
+// const session = require('express-session');
 const flash = require('connect-flash');
 const Driver = require('./models/driver')
 const Mean = require('./models/means');
@@ -18,19 +20,40 @@ const multer = require('multer');
 const { storage, cloudinary } = require('./cloudinary/index');
 const upload = multer({ storage });
 
+const MongoDBStore = require("connect-mongo");
 
-mongoose.Promise = global.Promise;
 
-const databaseUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017/mis'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/mis';
 
-mongoose.connect(databaseUrl, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => {
-    console.log('connection opened')
-  })
-  .catch(err => {
-    console.log('connection closed')
-    console.log(err)
-  })
+mongoose.connect(dbUrl, {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    useUnifiedTopology: true,
+    // useFindAndModify: false
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
+
+
+
+
+
+// mongoose.Promise = global.Promise;
+
+// const databaseUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017/mis'
+
+// mongoose.connect(databaseUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+// .then(() => {
+//     console.log('connection opened')
+//   })
+//   .catch(err => {
+//     console.log('connection closed')
+//     console.log(err)
+//   })
 
 
 // mongoose.connect('mongodb://127.0.0.1:27017/mis')
@@ -50,11 +73,41 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-app.use(session({
-    secret:'Amubpem',
+app.use(mongoSanitize({
+    replaceWith: '_'
+}))
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+
+const store = MongoDBStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e)
+})
+
+
+const sessionConfig = {
+    store,
+    name: 'session',
+    secret,
+    resave: false,
     saveUninitialized: true,
-    resave: true
-}));
+    cookie: {
+        httpOnly: true,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+// app.use(session({
+//     secret:'Amubpem',
+//     saveUninitialized: true,
+//     resave: true
+// }));
+app.use(session(sessionConfig));
 // app.use(session());
 app.use(flash());
 app.use((req, res, next) => {
@@ -235,6 +288,7 @@ function escapeRegex(text) {
 };
 
 
-app.listen(1000, (req, res) => {
+const port = process.env.PORT || 1000;
+app.listen(port, (req, res) => {
   console.log('keep off')
 })
