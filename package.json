@@ -4,8 +4,9 @@
   "description": "management information system",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "npm i",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "abbrev": "^1.1.1",
